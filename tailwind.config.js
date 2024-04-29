@@ -18,6 +18,9 @@ module.exports = {
         popup: "popup 0.25s ease-in-out",
         shimmer: "shimmer 3s ease-out infinite alternate",
       },
+      colors: {
+        'unwave-gray': '#e4e2dd',
+      },
       keyframes: {
         opacity: {
           "0%": { opacity: 0 },
