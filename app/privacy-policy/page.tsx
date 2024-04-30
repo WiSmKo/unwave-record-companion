@@ -57,51 +57,28 @@ const PrivacyPolicy = () => {
           className="leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "sans-serif" }}
         >
-          {`Last Updated: 2023-08-25
+          {`Privacy Policy for UnwaveSeekr
 
-Thank you for visiting ShipFast ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://shipfa.st (the "Website").
+Last updated: April 30, 2024
 
-By accessing or using the Website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in this policy, please do not use the Website.
+    Consent: Your use of UnwaveSeekr constitutes acceptance of this Privacy Policy and signifies your consent to the collection, processing, and use of your personal information in accordance with the terms outlined herein.
 
-1. Information We Collect
+    Data Collection: We collect specific user data necessary for order processing, including but not limited to:
+        Name
+        Email
+        Payment information
 
-1.1 Personal Data
+    Non-personal Data: UnwaveSeekr may also gather non-personal information through the use of web cookies to enhance user experience and improve our services.
 
-We collect the following personal information from you:
+    Data Sharing: We do not share, sell, or disclose any user data to third parties without explicit consent, except as required by law or as necessary for order processing.
 
-Name: We collect your name to personalize your experience and communicate with you effectively.
-Email: We collect your email address to send you important information regarding your orders, updates, and communication.
-Payment Information: We collect payment details to process your orders securely. However, we do not store your payment information on our servers. Payments are processed by trusted third-party payment processors.
+    Children's Privacy: UnwaveSeekr is not directed at individuals under the age of 18, and we do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.
 
-1.2 Non-Personal Data
+    Updates to Privacy Policy: Users will be informed of any changes to this Privacy Policy via email. Continued use of UnwaveSeekr after such modifications constitutes acceptance of the updated terms.
 
-We may use web cookies and similar technologies to collect non-personal information such as your IP address, browser type, device information, and browsing patterns. This information helps us to enhance your browsing experience, analyze trends, and improve our services.
+    Contact Information: If you have any questions, concerns, or requests regarding our privacy practices, please reach out to us at william@unwave.net.
 
-2. Purpose of Data Collection
-
-We collect and use your personal data for the sole purpose of order processing. This includes processing your orders, sending order confirmations, providing customer support, and keeping you updated about the status of your orders.
-
-3. Data Sharing
-
-We do not share your personal data with any third parties except as required for order processing (e.g., sharing your information with payment processors). We do not sell, trade, or rent your personal information to others.
-
-4. Children's Privacy
-
-ShipFast is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at the email address provided below.
-
-5. Updates to the Privacy Policy
-
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page, and we may notify you via email about significant changes.
-
-6. Contact Information
-
-If you have any questions, concerns, or requests related to this Privacy Policy, you can contact us at:
-
-Email: marc@shipfa.st
-
-For all other inquiries, please visit our Contact Us page on the Website.
-
-By using ShipFast, you consent to the terms of this Privacy Policy.`}
+Your trust and privacy are of utmost importance to us at UnwaveSeekr. Thank you for choosing to use our service.`}
         </pre>
       </div>
     </main>
