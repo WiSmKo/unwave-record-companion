@@ -69,7 +69,7 @@ These Terms of Service ("Terms") govern your use of UnwaveSeekr (the "Service"),
 
     Ownership: UnwaveSeekr is a service provided by Unwave. It does not confer ownership rights to users.
 
-    User Data: We collect and store user-provided information including name, email, and payment information. Your privacy and security are important to us. Please review our Privacy Policy for more details on how we handle your data: Privacy Policy.
+    User Data: We collect and store user-provided information including name, email, and payment information. Your privacy and security are important to us. Please review our Privacy Policy for more details on how we handle your data: https://www.unwave.net/privacy-policy.
 
     Non-Personal Data: We may also collect non-personal data through the use of web cookies. This data helps us improve the Service and provide a better user experience.
 
