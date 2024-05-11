@@ -21,7 +21,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
     try {
       await apiClient.post("/lead", { email });
 
-      toast.success("Thanks for joining the waitlist!");
+      toast.success("Thanks for joining the mailing list!");
 
       // just remove the focus on the input
       inputRef.current.blur();
@@ -44,7 +44,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
         value={email}
         ref={inputRef}
         autoComplete="email"
-        placeholder="tom@cruise.com"
+        placeholder="tony@iommi.com"
         className="input input-bordered w-full placeholder:opacity-60"
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -54,7 +54,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
         type="submit"
         disabled={isDisabled}
       >
-        Join waitlist
+        Join mailing list
         {isLoading ? (
           <span className="loading loading-spinner loading-xs"></span>
         ) : (

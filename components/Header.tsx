@@ -8,6 +8,7 @@ import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
 import logo from "@/app/Unwavev3Icon.png";
 import config from "@/config";
+import { staatliches } from "@/styles/fonts";
 
 const links: {
   href: string;
@@ -41,7 +42,7 @@ const Header = () => {
   }, [searchParams]);
 
   return (
-    <header className="bg-unwave-gray">
+    <header className="bg-base-200">
       <nav
         className="container flex items-center justify-between px-8 py-4 mx-auto"
         aria-label="Global"
@@ -53,7 +54,7 @@ const Header = () => {
             href="/"
             title={`${config.appName} homepage`}
           >
-            <Image
+            {/* <Image
               src={logo}
               alt={`${config.appName} logo`}
               className="w-8"
@@ -61,13 +62,13 @@ const Header = () => {
               priority={true}
               width={32}
               height={32}
-            />
-            <span className="font-extrabold text-lg">{config.appName}</span>
+            /> */}
+            <span className="text-xl" style={staatliches.style}>{config.appName}</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
         <div className="flex lg:hidden">
-          <button
+          {/* <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
             onClick={() => setIsOpen(true)}
@@ -87,7 +88,7 @@ const Header = () => {
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
-          </button>
+          </button> */}
         </div>
 
         {/* Your links on large screens */}
@@ -105,7 +106,7 @@ const Header = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
+        {/* <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div> */}
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}

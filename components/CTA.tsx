@@ -15,10 +15,10 @@ const CTA = () => {
       <div className="relative hero-content text-center text-neutral-content p-8">
         <div className="flex flex-col items-center max-w-xl p-8 md:p-0">
           <h2 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 md:mb-12">
-            Scan your records, get a fair value, earn
+            Shhhhh.. super secret record collector tool under development 🤫
           </h2>
           <p className="text-lg opacity-80 mb-12 md:mb-16">
-            Don&apos;t waste time browsing endless listings and databases
+            Sign up to our mailing list here to be the first to know when our record collector batman belt is ready to go. Find record prices quickly, great for sellers and buyers
           </p>
 
           <ButtonLead />

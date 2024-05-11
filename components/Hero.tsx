@@ -23,11 +23,10 @@ const Hero = () => {
         </a> */}
 
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4">
-          Get instant prices for your records
+          Immerse Yourself in the Sound: Discover the Unwave Network
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-          Point your camera at the sleeve and get an instant guide price for your records. Add extra details for a more refined result. Get a fair price for your records instantly and sell with confidence.
-        </p>
+          We think an awful lot of ourselves and thought the world needs to hear us natter, so join us for our weekly rambles, album deep dives and vinyl enthusiasm with our podcast. No rules, all genres, music is life 🫶        </p>
         <ButtonLead />
 
         {/* <TestimonialsAvatars priority={true} /> */}
