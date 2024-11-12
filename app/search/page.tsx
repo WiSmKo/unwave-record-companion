@@ -2,26 +2,22 @@
 
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
-import RecordSearchForm from "@/components/RecordSearchForm";
 import  React,  { useState } from "react";
-import { Album } from "../transfer-objects/Album";
-import { Pagination } from "../transfer-objects/Pagination";
-import AlbumTile from "@/components/AlbumTile";
-import LookUpForm from "@/components/LookUpForm";
+import AlbumTile from "@/app/search/components/AlbumTile";
+import LookUpForm from "@/app/search/components/RecordSearchForm";
+import { set } from "mongoose";
+import { ReleaseData } from "./discogs-service";
 
 
 export default function Search() {
 
   const server = process.env.NEXT_PUBLIC_SERVER;
 
-  const [albums, setAlbums] = useState<Album[]>([]);
-  const [pagination, setPagination] = useState<Pagination | null>(null);
-  const [collection, setCollection] = useState<Album[]>([]);
+  const [findRecordResponse, setRecordResponse] = useState<ReleaseData>();
   const [searchAttempted, setSearchAttempted] = useState<boolean>(false);
 
-  const handleRecordSearch = (newAlbums: Album[], newPagination: Pagination) => {
-      setAlbums(newAlbums);
-      setPagination(newPagination);
+  const handleRecordSearch = (findRecordResponse: ReleaseData) => {
+      setRecordResponse(findRecordResponse);
       setSearchAttempted(true);
   };
 
@@ -30,7 +26,7 @@ export default function Search() {
       <section className="max-w-xl mx-auto space-y-8">
         <h1 className="text-3xl md:text-4xl font-extrabold">Search Page</h1>
         <LookUpForm onRecordSearch={handleRecordSearch} />
-        {albums.length > 0 && <AlbumTile album={albums[0]} />}
+        {searchAttempted && <AlbumTile findRecordResponse={findRecordResponse} />}
       </section>
     </main>
   );
