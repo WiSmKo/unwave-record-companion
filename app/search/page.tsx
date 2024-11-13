@@ -11,7 +11,6 @@ import { ReleaseData } from "./discogs-service";
 
 export default function Search() {
 
-  const server = process.env.NEXT_PUBLIC_SERVER;
 
   const [findRecordResponse, setRecordResponse] = useState<ReleaseData>();
   const [searchAttempted, setSearchAttempted] = useState<boolean>(false);

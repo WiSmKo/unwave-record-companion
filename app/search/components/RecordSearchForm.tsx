@@ -16,7 +16,6 @@ interface LookUpFormProps {
 
   export default function LookUpForm({onRecordSearch}: LookUpFormProps) {
     const { register, handleSubmit, reset, formState: { errors }, setError } = useForm<FormData>({reValidateMode: 'onSubmit'});
-    const server = process.env.NEXT_PUBLIC_SERVER;
   
     const onSubmit: SubmitHandler<FormData> = async (data) =>{
   
