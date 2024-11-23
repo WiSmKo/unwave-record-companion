@@ -45,7 +45,8 @@ export async function searchDiscogs(artist: String, title: String, type: String,
 }
 
 export async function getPriceSuggestion(discogsId: number): Promise<number> {
-    console.log(`Discogs ID: ${discogsId}`);
+    if(!discogsId) throw new Error("No Discogs ID provided");
+    console.log(`Getting price suggestion for Discogs ID: ${discogsId}`);
     const priceResponse = await fetch(`https://api.discogs.com/marketplace/price_suggestions/${discogsId.toString()}`, {
         headers: {
             Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`
@@ -153,7 +154,7 @@ interface Video {
     embed: boolean;
 }
   
-interface DiscogsMaster {
+export interface DiscogsMaster {
     id: number;
     main_release: number;
     most_recent_release: number;

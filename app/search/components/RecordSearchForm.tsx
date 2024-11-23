@@ -52,7 +52,7 @@ interface LookUpFormProps {
             const response = await findRelease(title, artist);
             onRecordSearch(response);
         } catch (error) {
-            console.error('There was an error.', error);
+            setError("term", { type: "manual", message: error.message });
         }finally {
             setLoading(false);
         }

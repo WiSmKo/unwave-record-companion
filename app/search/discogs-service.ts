@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion } from "@/libs/discogs";
+import { DiscogsMaster, searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion } from "@/libs/discogs";
 
 export interface ReleaseData {
     image: string;
@@ -21,14 +21,47 @@ export async function findRelease(title: string, artist: string): Promise<Releas
     
     const type = "release";
     const format = "vinyl,album";
+    let originalPriceSuggestion: number| null = null;
+    let latestPriceSuggestion: number| null = null;
+    let discogsMaster: DiscogsMaster | null = null;
+    let imageUri: string | null = null;
 
     const searchResponse = await searchDiscogs(artist, title, type, format);
-    const discogsMaster = await getDiscogsMasterRelease(searchResponse.results[0].master_id);
-    const originalPriceSuggestion = await getPriceSuggestion(discogsMaster.main_release); // mainReleasePriceSuggestion,
-    const latestPriceSuggestion = await getPriceSuggestion(discogsMaster.most_recent_release);
+    if (searchResponse.results.length === 0) throw new Error("No releases found");
+    
+    for (const result of searchResponse.results) {
+        if (result.master_id) {
+            discogsMaster = await getDiscogsMasterRelease(result.master_id);
+            break;
+        }
+    }
+    console.log("Search results found: ", searchResponse.results.length);
 
+    if (!discogsMaster) {
+        throw new Error("No valid master ID found in search results");
+    }
+    console.log("Discogs master: ", discogsMaster.id);
+
+    if(discogsMaster.main_release){
+        originalPriceSuggestion = await getPriceSuggestion(discogsMaster.main_release);
+    } else {
+        console.log("Error fetching main release price suggestion, no id returned from discogs.")
+    }
+    
+    if(discogsMaster.most_recent_release){
+        latestPriceSuggestion = await getPriceSuggestion(discogsMaster.most_recent_release);
+    } else {
+        console.log("Error fetching latest release price suggestion, no id returned from discogs,")
+    }
+
+    if(discogsMaster.images[0]?.uri){
+        imageUri = discogsMaster.images[0].uri
+    } else {
+         console.log("No image URI found");
+    }
+    
     const findRecordResponse:ReleaseData = {
-        image: discogsMaster.images[0].uri,
+        image: imageUri,
         title: discogsMaster.title,
         artists: discogsMaster.artists.map(artist => artist.name),
         year: discogsMaster.year,
