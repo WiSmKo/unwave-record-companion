@@ -25,37 +25,47 @@ export async function getDiscogsMasterRelease(masterId: number): Promise<Discogs
  * @returns A promise that resolves with a DiscogsPaginatedSearchResult containing the search results.
  */
 export async function searchDiscogs(artist: String, title: String, type: String, format: String): Promise<DiscogsPaginatedSearchResult> {
-    
-    const queryParams = {
-        type: "release",
-        format: "vinyl",
-        title: title,
-        artist: artist,
-    }
-
-    const queryString = buildQuery(queryParams);
-
-    const searchResponse = await fetch(`https://api.discogs.com/database/search?${queryString}`, {
-        headers: {
-            Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`
+    try{
+        const queryParams = {
+            type: "release",
+            format: "vinyl",
+            title: title,
+            artist: artist,
         }
-    });
-    const results = await searchResponse.json();
-    return results;
+
+        const queryString = buildQuery(queryParams);
+
+        const searchResponse = await fetch(`https://api.discogs.com/database/search?${queryString}`, {
+            headers: {
+                Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`
+            }
+        });
+        const results = await searchResponse.json();
+        return results;
+    } catch (error) {
+        console.error(error);
+        throw new Error("Error searching Discogs");
+    }
 }
 
 export async function getPriceSuggestion(discogsId: number): Promise<number> {
     if(!discogsId) throw new Error("No Discogs ID provided");
-    console.log(`Getting price suggestion for Discogs ID: ${discogsId}`);
-    const priceResponse = await fetch(`https://api.discogs.com/marketplace/price_suggestions/${discogsId.toString()}`, {
-        headers: {
-            Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`
-        }
-    });
-    const result = await priceResponse.json();
-    console.log(result);
-    const vgPlusCondition = result["Very Good Plus (VG+)"]; // Directly accessing the VG+ condition, we can modify this later to accept a parameter here and filter condition by the input
-    return vgPlusCondition ? vgPlusCondition.value : null;
+
+    try{
+        console.log(`Getting price suggestion for Discogs ID: ${discogsId}`);
+        const priceResponse = await fetch(`https://api.discogs.com/marketplace/price_suggestions/${discogsId.toString()}`, {
+            headers: {
+                Authorization: `Discogs token=${process.env.DISCOGS_TOKEN}`
+            }
+        });
+        const result = await priceResponse.json();
+        console.log(result);
+        const vgPlusCondition = result["Very Good Plus (VG+)"]; // Directly accessing the VG+ condition, we can modify this later to accept a parameter here and filter condition by the input
+        return vgPlusCondition ? vgPlusCondition.value : null;
+    } catch (error) {
+        console.error(error);
+        throw new Error("Error getting price suggestion");
+    }
 }
 
 //This helper method is used to build the search query takng a map of parameters as input.

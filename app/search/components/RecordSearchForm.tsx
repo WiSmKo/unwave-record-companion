@@ -24,10 +24,9 @@ interface LookUpFormProps {
   
         let title: string;
         let artist: string;
-        const VALIDATION_MESSAGE : string = "Search term is empty"
         
         if (!data.term.trim()) {
-            setError("term", { type: "manual", message: VALIDATION_MESSAGE });
+            setError("term", { type: "manual", message: "Search term is empty" });
             return;
         }
 
@@ -52,7 +51,7 @@ interface LookUpFormProps {
             const response = await findRelease(title, artist);
             onRecordSearch(response);
         } catch (error) {
-            setError("term", { type: "manual", message: error.message });
+            setError("term", { type: "manual", message: "Couldn't find release" });
         }finally {
             setLoading(false);
         }
@@ -65,7 +64,7 @@ interface LookUpFormProps {
                 <input 
                     type="text" 
                     className="input block w-full" 
-                    placeholder="Ask me about your records" 
+                    placeholder="Album name" 
                     {...register("term")} 
                 />
                 
