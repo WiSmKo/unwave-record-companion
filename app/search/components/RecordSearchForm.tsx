@@ -1,6 +1,6 @@
 'use client';
 
-import { ReleaseData, findRelease } from "@/app/search/discogs-service";
+import { ReleaseData, findRelease } from "@/app/search/search-service";
 import { Album } from "@/app/transfer-objects/Album";
 import { Pagination } from "@/app/transfer-objects/Pagination";
 import { useForm, SubmitHandler } from "react-hook-form";
