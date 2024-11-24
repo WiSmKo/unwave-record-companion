@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image';
-import { ReleaseData } from '../discogs-service';
+import { ReleaseData } from '../search-service';
 
 interface AlbumTileProps {
     findRecordResponse: ReleaseData
@@ -16,6 +16,7 @@ export default function AlbumTile(props: AlbumTileProps) {
                 <p>Artist: {props.findRecordResponse.artists}</p>
                 <p>Year: {props.findRecordResponse.year}</p>
                 <p>Price range: {props.findRecordResponse.latestPriceSuggestion?.toFixed(2) ?? 'N/A'}-{props.findRecordResponse.originalPriceSuggestion?.toFixed(2) ?? 'N/A'}</p>
+                <p>{props.findRecordResponse.summary}</p> 
             </div>
         </div>
     )

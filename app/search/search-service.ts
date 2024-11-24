@@ -2,6 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { DiscogsMaster, searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion } from "@/libs/discogs";
+import { findWikiTitle, getWikiPage, getWikiSummary, searchWiki } from "@/libs/wiki";
+import { wikiSummary } from "wikipedia";
 
 export interface ReleaseData {
     image: string;
@@ -13,6 +15,7 @@ export interface ReleaseData {
     originalPriceSuggestion: number;
     latestPriceSuggestion: number;
     genres: string[];
+    summary: string;
 }
 
 export async function findRelease(title: string, artist: string): Promise<ReleaseData> {
@@ -59,6 +62,10 @@ export async function findRelease(title: string, artist: string): Promise<Releas
     } else {
          console.log("No image URI found");
     }
+
+    const wikiTitle = (await searchWiki(`${discogsMaster.title}, ${discogsMaster.artists[0].name}, album`)).results[0].title;
+    const wikiSource = (await getWikiSummary(wikiTitle)).extract;
+   
     
     const findRecordResponse:ReleaseData = {
         image: imageUri,
@@ -69,7 +76,8 @@ export async function findRelease(title: string, artist: string): Promise<Releas
         noForSale: discogsMaster.num_for_sale,
         originalPriceSuggestion: originalPriceSuggestion, // mainReleasePriceSuggestion,
         latestPriceSuggestion:latestPriceSuggestion, // latestReleasePriceSuggestion,
-        genres: discogsMaster.genres.concat(discogsMaster.styles)
+        genres: discogsMaster.genres.concat(discogsMaster.styles),
+        summary: wikiSource
     };
 
     revalidatePath("/");

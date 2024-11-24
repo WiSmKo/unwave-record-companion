@@ -6,7 +6,7 @@ import  React,  { useState } from "react";
 import AlbumTile from "@/app/search/components/AlbumTile";
 import LookUpForm from "@/app/search/components/RecordSearchForm";
 import { set } from "mongoose";
-import { ReleaseData } from "./discogs-service";
+import { ReleaseData } from "./search-service";
 
 
 export default function Search() {
