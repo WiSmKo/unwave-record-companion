@@ -1,12 +1,9 @@
 'use client';
 
 import { ReleaseData, findRelease } from "@/app/search/search-service";
-import { Album } from "@/app/transfer-objects/Album";
-import { Pagination } from "@/app/transfer-objects/Pagination";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { title } from "process";
 import { useState } from "react";
-import { set } from "mongoose";
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 
 interface LookUpFormProps {
     onRecordSearch: (findRecordResponse: ReleaseData) => void;
@@ -60,26 +57,37 @@ interface LookUpFormProps {
   
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex items-center mb-4 tooltip" data-tip="Enter a title, you can improve the search by adding an artist name seperated by a comma (e.g. 'Paranoid, Black Sabbath')">
+            
+            <label htmlFor="search" className="label">
+                <span className="label-text">Album Search</span>
+                <span 
+                    className="label-text-alt tooltip badge badge-secondary badge-outline" 
+                    data-tip="Search by the album title, the artist name is optional and should be separated by a comma (eg. Abbey Road, The Beatles)">
+                    
+                        Help</span>
+            </label>
+            <div className="flex w-full space-x-2">
                 <input 
+                    id="search"
                     type="text" 
-                    className="input block w-full" 
+                    className="input input-bordered w-full" 
                     placeholder="Album name" 
                     {...register("term")} 
                 />
                 
                 <button 
-                    className="btn btn-primary ml-2 group" 
+                    className="btn btn-primary flex items-center justify-center" 
                     type="submit"  
                 >
                     {loading ? (
                         <span className="loading loading-spinner"></span>
                     ): (
-                        "Search"
+                        <MagnifyingGlassIcon className="h-5 w-5" />
                     )}
-                    </button>
-                {errors.term && <p className="text-sm text-red-500">{errors.term.message}</p>}
+                </button>
             </div>
+                {errors.term && <p className="text-sm text-red-500">{errors.term.message}</p>}
+
         </form>
     );
   }
