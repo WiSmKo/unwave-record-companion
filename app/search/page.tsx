@@ -23,7 +23,7 @@ export default function Search() {
   return (
     <main className="min-h-screen p-8 pb-24">
       <section className="max-w-xl mx-auto space-y-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold">Search Page</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold">Crate Mole</h1>
         <LookUpForm onRecordSearch={handleRecordSearch} />
         {searchAttempted && <AlbumTile findRecordResponse={findRecordResponse} />}
       </section>
