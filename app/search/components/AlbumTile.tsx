@@ -25,17 +25,15 @@ export default function AlbumTile(props: AlbumTileProps) {
                         <div className="stat-value text-indigo-800">{props.findRecordResponse.year}</div>
                     </div>
                 </div>
-
-
                 <p className="text-lg font-bold text-center">
                 £{props.findRecordResponse.latestPriceSuggestion
                     ? `${Math.round(props.findRecordResponse.latestPriceSuggestion)}-${Math.round(props.findRecordResponse.originalPriceSuggestion)}`
                     : Math.round(props.findRecordResponse.originalPriceSuggestion)}
                 </p>    
 
-                <div className="pt-4 flex flex-wrap justify-center gap-5">
+                <div className="flex flex-wrap justify-center gap-5">
                     {props.findRecordResponse.genres.map((genre, index) => (
-                        <span className="badge badge-success gap-2">{genre}</span>
+                        <span className="badge badge-success gap-2" key={index}>{genre}</span>
                     ))}
                 </div>
             </div>
