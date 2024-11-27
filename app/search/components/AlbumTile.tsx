@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { ReleaseData } from '../search-service';
+import StarRating from '@/components/StarRating';
 
 interface AlbumTileProps {
     findRecordResponse: ReleaseData
@@ -29,7 +30,9 @@ export default function AlbumTile(props: AlbumTileProps) {
                 £{props.findRecordResponse.latestPriceSuggestion
                     ? `${Math.round(props.findRecordResponse.latestPriceSuggestion)}-${Math.round(props.findRecordResponse.originalPriceSuggestion)}`
                     : Math.round(props.findRecordResponse.originalPriceSuggestion)}
-                </p>    
+                </p>
+
+                <StarRating average={props.findRecordResponse.rating.average} count={props.findRecordResponse.rating.count} />
 
                 <div className="flex flex-wrap justify-center gap-5">
                     {props.findRecordResponse.genres.map((genre, index) => (
@@ -40,10 +43,8 @@ export default function AlbumTile(props: AlbumTileProps) {
         </div>
         <div className="mt-4">
             {/* Album description */}
-            <div className=''>
-                <p>{props.findRecordResponse.summary}</p>
-            </div>
+            <p>{props.findRecordResponse.summary}</p>
         </div></>
-        
+    
     )
 }
