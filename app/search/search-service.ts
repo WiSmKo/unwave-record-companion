@@ -1,9 +1,10 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { DiscogsMaster, searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion } from "@/libs/discogs";
+import { DiscogsMaster, searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion, getRating } from "@/libs/discogs";
 import { findWikiTitle, getWikiPage, getWikiSummary, searchWiki } from "@/libs/wiki";
 import { wikiSummary } from "wikipedia";
+import { count } from "console";
 
 export interface ReleaseData {
     image: string;
@@ -16,6 +17,10 @@ export interface ReleaseData {
     latestPriceSuggestion: number;
     genres: string[];
     summary: string;
+    rating: {
+        count: number, 
+        average: number
+    } ;
 }
 
 export async function findRelease(title: string, artist: string): Promise<ReleaseData> {
@@ -28,6 +33,9 @@ export async function findRelease(title: string, artist: string): Promise<Releas
     let latestPriceSuggestion: number| null = null;
     let discogsMaster: DiscogsMaster | null = null;
     let imageUri: string | null = null;
+    let ratingAverage: number | null = null;
+    let ratingCount: number | null = null;
+    let wikiSource: string | null = null;
 
     const searchResponse = await searchDiscogs(artist, title, type, format);
     if (searchResponse.results.length === 0) throw new Error("No releases found");
@@ -57,14 +65,25 @@ export async function findRelease(title: string, artist: string): Promise<Releas
         console.log("Error fetching latest release price suggestion, no id returned from discogs,")
     }
 
+    const discogsRatingResponse = await getRating(discogsMaster.main_release);
+    if(discogsRatingResponse.rating!=undefined){
+        ratingAverage = discogsRatingResponse.rating.average;
+        ratingCount = discogsRatingResponse.rating.count
+    } else {
+        console.log("Error fetching rating, no ratings returned from discogs.");
+    };
+
     if(discogsMaster.images[0]?.uri){
         imageUri = discogsMaster.images[0].uri
     } else {
          console.log("No image URI found");
     }
 
-    const wikiTitle = (await searchWiki(`${discogsMaster.title}, ${discogsMaster.artists[0].name}, album`)).results[0].title;
-    const wikiSource = (await getWikiSummary(wikiTitle)).extract;
+    const wikiResponse = await searchWiki(`${discogsMaster.title}, ${discogsMaster.artists[0].name}, album`);
+    if (wikiResponse.results && wikiResponse.results.length > 0 && wikiResponse.results.length > 0) {
+        const wikiTitle = wikiResponse.results[0].title;
+        wikiSource = (await getWikiSummary(wikiTitle)).extract;
+    }
    
     
     const findRecordResponse:ReleaseData = {
@@ -77,7 +96,8 @@ export async function findRelease(title: string, artist: string): Promise<Releas
         originalPriceSuggestion: originalPriceSuggestion, // mainReleasePriceSuggestion,
         latestPriceSuggestion:latestPriceSuggestion, // latestReleasePriceSuggestion,
         genres: discogsMaster.genres.concat(discogsMaster.styles),
-        summary: wikiSource
+        summary: wikiSource,
+        rating: {count: ratingCount, average: ratingAverage},
     };
 
     revalidatePath("/");
