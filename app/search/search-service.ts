@@ -71,7 +71,7 @@ export async function findRelease(title: string, artist: string): Promise<Releas
         ratingCount = discogsRatingResponse.rating.count
     } else {
         console.log("Error fetching rating, no ratings returned from discogs.");
-    };
+    }
 
     if(discogsMaster.images[0]?.uri){
         imageUri = discogsMaster.images[0].uri
