@@ -3,12 +3,21 @@
 import Image from 'next/image';
 import { ReleaseData } from '../search-service';
 import StarRating from '@/components/StarRating';
+import { useCurrency } from '@/app/CurrencyProvider';
+import { Currency, currencyOptions } from '@/types/currency';
 
 interface AlbumTileProps {
     findRecordResponse: ReleaseData
+    selectedCurrency: Currency
   }
 
 export default function AlbumTile(props: AlbumTileProps) {
+
+    const {rates, loading} = useCurrency(); 
+
+    const convertedLatestPrice : number = (props.findRecordResponse.latestPriceSuggestion * rates[props.selectedCurrency]);
+    const convertedOriginalPrice : number = (props.findRecordResponse.originalPriceSuggestion * rates[props.selectedCurrency]);
+
     return (
         <><div className="card lg:card-side bg-base-100 shadow-xl">
             <figure>
@@ -27,9 +36,9 @@ export default function AlbumTile(props: AlbumTileProps) {
                     </div>
                 </div>
                 <p className="text-lg font-bold text-center">
-                £{props.findRecordResponse.latestPriceSuggestion
-                    ? `${Math.round(props.findRecordResponse.latestPriceSuggestion)}-${Math.round(props.findRecordResponse.originalPriceSuggestion)}`
-                    : Math.round(props.findRecordResponse.originalPriceSuggestion)}
+                {currencyOptions[props.selectedCurrency].symbol}{props.findRecordResponse.latestPriceSuggestion
+                    ? `${Math.round(convertedLatestPrice)}-${Math.round(convertedOriginalPrice)}`
+                    : Math.round(convertedOriginalPrice)}
                 </p>
 
                 <StarRating average={props.findRecordResponse.rating.average} count={props.findRecordResponse.rating.count} />

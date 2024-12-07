@@ -1,10 +1,9 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { DiscogsMaster, searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion, getRating } from "@/libs/discogs";
-import { findWikiTitle, getWikiPage, getWikiSummary, searchWiki } from "@/libs/wiki";
-import { wikiSummary } from "wikipedia";
-import { count } from "console";
+import { searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion, getRating } from "@/libs/discogs";
+import { getWikiSummary, searchWiki } from "@/libs/wiki";
+import { DiscogsMaster } from "@/types/discogs";
 
 export interface ReleaseData {
     image: string;
