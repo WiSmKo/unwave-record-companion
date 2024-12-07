@@ -1,12 +1,9 @@
-import { error } from "console";
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
-import { env } from "process";
+import { NextRequest, NextResponse } from "next/server";
 
 let rates: { [currency: string]: number } | null = null;
 let cacheTimestamp: number | null = null;
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: Request | NextRequest) {
     const now = Date.now();
     
     if (rates && cacheTimestamp && now - cacheTimestamp < Number(process.env.EXCHANGE_RATE_CACHE_DURATION)) {
