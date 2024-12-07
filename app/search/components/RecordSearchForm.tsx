@@ -61,9 +61,9 @@ interface LookUpFormProps {
             <label htmlFor="search" className="label">
                 <span className="label-text">Album Search</span>
                 <span 
+                    data-tooltip-id="tooltip" 
                     className="label-text-alt tooltip badge badge-secondary badge-outline" 
-                    data-tip="Search by the album title, the artist name is optional and should be separated by a comma (eg. Abbey Road, The Beatles)">
-                    
+                    data-tooltip-content="Search by the album title, the artist name is optional and should be separated by a comma (eg. Abbey Road, The Beatles)">
                         Help</span>
             </label>
             <div className="flex w-full space-x-2">
