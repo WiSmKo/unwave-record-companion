@@ -5,6 +5,7 @@ import { ReleaseData } from '../search-service';
 import StarRating from '@/components/StarRating';
 import { useCurrency } from '@/app/CurrencyProvider';
 import { Currency, currencyOptions } from '@/types/currency';
+import { Condition } from '@/types/discogs';
 
 interface AlbumTileProps {
     findRecordResponse: ReleaseData
@@ -13,10 +14,15 @@ interface AlbumTileProps {
 
 export default function AlbumTile(props: AlbumTileProps) {
 
-    const {rates, loading} = useCurrency(); 
+    const {rates, loading} = useCurrency();
+    
+    const mintPrice = props.findRecordResponse.originalPriceSuggestion[Condition.Mint].value;
+    const goodPrice = props.findRecordResponse.originalPriceSuggestion[Condition.VeryGood].value;
 
-    const convertedLatestPrice : number = (props.findRecordResponse.latestPriceSuggestion * rates[props.selectedCurrency]);
-    const convertedOriginalPrice : number = (props.findRecordResponse.originalPriceSuggestion * rates[props.selectedCurrency]);
+    const convertedMintPrice : number = (mintPrice * rates[props.selectedCurrency]);
+    const convertedGoodPrice : number = (goodPrice * rates[props.selectedCurrency]);
+
+    const currencySymbol = currencyOptions[props.selectedCurrency].symbol;
 
     return (
         <><div className="card lg:card-side bg-base-100 shadow-xl">
@@ -35,12 +41,14 @@ export default function AlbumTile(props: AlbumTileProps) {
                         <div className="stat-value text-indigo-800">{props.findRecordResponse.year}</div>
                     </div>
                 </div>
-                <p className="text-lg font-bold text-center">
-                {currencyOptions[props.selectedCurrency].symbol}{props.findRecordResponse.latestPriceSuggestion
-                    ? `${Math.round(convertedLatestPrice)}-${Math.round(convertedOriginalPrice)}`
-                    : Math.round(convertedOriginalPrice)}
+                <p className='text-center'>
+                    <span className="text-lg font-bold">
+                        {currencySymbol}{Math.round(convertedGoodPrice)}-{currencySymbol}{Math.round(convertedMintPrice)}
+                    </span><br />
+                    <span className='text-xs text-gray-500'>
+                        For an original copy
+                    </span>
                 </p>
-
                 <StarRating average={props.findRecordResponse.rating.average} count={props.findRecordResponse.rating.count} />
 
                 <div className="flex flex-wrap justify-center gap-5">

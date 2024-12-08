@@ -109,3 +109,21 @@ export interface DiscogsMaster {
     data_quality: string;
     videos: Video[];
 }
+
+export enum Condition {
+    Mint = 'Mint (M)',
+    NearMint = 'Near Mint (NM or M-)',
+    VeryGoodPlus = 'Very Good Plus (VG+)',
+    VeryGood = 'Very Good (VG)',
+    GoodPlus = 'Good Plus (G+)',
+    Good = 'Good (G)',
+    Fair = 'Fair (F)',
+    Poor = 'Poor (P)',
+}
+
+export type ConditionValues = {
+    [condition in Condition]: {
+        currency: string;
+        value: number;
+    };
+};
