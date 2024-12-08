@@ -31,7 +31,7 @@ export default function Search() {
       </section>
       <section className="max-w-xl mx-auto space-y-8">
         <h1 className="text-3xl md:text-4xl font-extrabold">Crate Mole</h1>
-        Crate mole is a companion for record collectors. Intended to be a tool to use when you're out in real record stores, fairs, car boots or charity shops.
+        Crate mole is a companion for record collectors. Intended to be a tool to use when you&#39;re out in real record stores, fairs, car boots or charity shops.
         Designed to give you an insight into those intriguing records you come across on your search.
         <LookUpForm onRecordSearch={handleRecordSearch} />
         {searchAttempted && (
