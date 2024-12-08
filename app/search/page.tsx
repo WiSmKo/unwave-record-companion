@@ -26,9 +26,13 @@ export default function Search() {
 
   return (
     <main className="min-h-screen p-8 pb-24">
+      <section className="max-w-xl mx-auto space-y-8 flex justify-end"> 
+        <CurrencySelector onCurrencyChange={handleCurrencyChange} />
+      </section>
       <section className="max-w-xl mx-auto space-y-8">
         <h1 className="text-3xl md:text-4xl font-extrabold">Crate Mole</h1>
-        <CurrencySelector onCurrencyChange={handleCurrencyChange} />
+        Crate mole is a companion for record collectors. Intended to be a tool to use when you're out in real record stores, fairs, car boots or charity shops.
+        Designed to give you an insight into those intriguing records you come across on your search.
         <LookUpForm onRecordSearch={handleRecordSearch} />
         {searchAttempted && (
           <AlbumTile 

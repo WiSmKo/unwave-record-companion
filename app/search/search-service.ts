@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { searchDiscogs, getDiscogsMasterRelease, getPriceSuggestion, getRating } from "@/libs/discogs";
 import { getWikiSummary, searchWiki } from "@/libs/wiki";
-import { DiscogsMaster } from "@/types/discogs";
+import { Condition, ConditionValues, DiscogsMaster } from "@/types/discogs";
 
 export interface ReleaseData {
     image: string;
@@ -12,7 +12,7 @@ export interface ReleaseData {
     year: number; 
     noOfTracks: number;
     noForSale: number;
-    originalPriceSuggestion: number;
+    originalPriceSuggestion: ConditionValues;
     latestPriceSuggestion: number;
     genres: string[];
     summary: string;
@@ -28,8 +28,7 @@ export async function findRelease(title: string, artist: string): Promise<Releas
     
     const type = "release";
     const format = "vinyl,album";
-    let originalPriceSuggestion: number| null = null;
-    let latestPriceSuggestion: number| null = null;
+    let originalPriceSuggestion: ConditionValues| null = null;
     let discogsMaster: DiscogsMaster | null = null;
     let imageUri: string | null = null;
     let ratingAverage: number | null = null;
@@ -58,12 +57,6 @@ export async function findRelease(title: string, artist: string): Promise<Releas
         console.log("Error fetching main release price suggestion, no id returned from discogs.")
     }
     
-    if(discogsMaster.most_recent_release){
-        latestPriceSuggestion = await getPriceSuggestion(discogsMaster.most_recent_release);
-    } else {
-        console.log("Error fetching latest release price suggestion, no id returned from discogs,")
-    }
-
     const discogsRatingResponse = await getRating(discogsMaster.main_release);
     if(discogsRatingResponse.rating!=undefined){
         ratingAverage = discogsRatingResponse.rating.average;
@@ -93,7 +86,7 @@ export async function findRelease(title: string, artist: string): Promise<Releas
         noOfTracks: discogsMaster.tracklist.length,
         noForSale: discogsMaster.num_for_sale,
         originalPriceSuggestion: originalPriceSuggestion, // mainReleasePriceSuggestion,
-        latestPriceSuggestion:latestPriceSuggestion, // latestReleasePriceSuggestion,
+        latestPriceSuggestion:0, // latestReleasePriceSuggestion,
         genres: discogsMaster.genres.concat(discogsMaster.styles),
         summary: wikiSource,
         rating: {count: ratingCount, average: ratingAverage},

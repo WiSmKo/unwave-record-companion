@@ -1,4 +1,4 @@
-import { DiscogsMaster, DiscogsPaginatedSearchResult, DiscogsRatingResponse } from "@/types/discogs";
+import { Condition, ConditionValues, DiscogsMaster, DiscogsPaginatedSearchResult, DiscogsRatingResponse } from "@/types/discogs";
 
 /**
  * Fetches the master release from the Discogs API, given a master ID.
@@ -49,7 +49,7 @@ export async function searchDiscogs(artist: String, title: String, type: String,
     }
 }
 
-export async function getPriceSuggestion(discogsId: number): Promise<number> {
+export async function getPriceSuggestion(discogsId: number): Promise<ConditionValues> {
     if(!discogsId) throw new Error("No Discogs ID provided");
 
     try{
@@ -60,9 +60,7 @@ export async function getPriceSuggestion(discogsId: number): Promise<number> {
             }
         });
         const result = await priceResponse.json();
-        console.log(result);
-        const vgPlusCondition = result["Very Good Plus (VG+)"]; // Directly accessing the VG+ condition, we can modify this later to accept a parameter here and filter condition by the input
-        return vgPlusCondition ? vgPlusCondition.value : null;
+        return result;
     } catch (error) {
         console.error(error);
         throw new Error("Error getting price suggestion");
