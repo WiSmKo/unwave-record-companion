@@ -17,6 +17,8 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 
 import Footer from "@/components/Footer";
+import Search from '@/components/RecordSearchForm';
+import RecordSearchForm from '@/components/RecordSearchForm';
 
 
 export default function Home() {
@@ -37,13 +39,15 @@ export default function Home() {
 
         <SpotifyEmbed />
 
+        <RecordSearchForm />
+
         {/* <FeaturesAccordion /> */}
 
         {/* <Pricing /> */}
 
         {/* <FAQ /> */}
 
-        <CTA />
+        {/* <CTA /> */}
 
       </main>
 
