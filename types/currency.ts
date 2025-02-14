@@ -12,6 +12,7 @@ export enum Currency {
     INR = "INR",
     BRL = "BRL",
     MXN = "MXN",
+    SEK = "SEK",
 }
   
 export const currencyOptions = {
@@ -28,6 +29,7 @@ export const currencyOptions = {
     [Currency.INR]: { value: 'INR', label: 'Indian Rupee', symbol: '₹' },
     [Currency.BRL]: { value: 'BRL', label: 'Brazilian Real', symbol: 'R$' },
     [Currency.MXN]: { value: 'MXN', label: 'Mexican Peso', symbol: '$' },
+    [Currency.SEK]: { value: 'SEK', label: 'Swedish Krona', symbol: 'kr' },
 };
 
 export interface CurrencyRates {

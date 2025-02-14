@@ -4,20 +4,10 @@ import Header from "@/components/Header";
 
 import Hero from "@/components/Hero";
 
-import Problem from "@/components/Problem";
-
 import SpotifyEmbed from '@/components/SpotifyEmbed';
 
-import FeaturesAccordion from "@/components/FeaturesAccordion";
-
-import Pricing from "@/components/Pricing";
-
-import FAQ from "@/components/FAQ";
-
-import CTA from "@/components/CTA";
-
 import Footer from "@/components/Footer";
-import Search from '@/components/RecordSearchForm';
+
 import RecordSearchForm from '@/components/RecordSearchForm';
 
 
@@ -37,17 +27,9 @@ export default function Home() {
 
         <Hero />
 
-        <SpotifyEmbed />
-
         <RecordSearchForm />
 
-        {/* <FeaturesAccordion /> */}
-
-        {/* <Pricing /> */}
-
-        {/* <FAQ /> */}
-
-        {/* <CTA /> */}
+        <SpotifyEmbed />
 
       </main>
 
