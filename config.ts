@@ -3,10 +3,10 @@ import { ConfigProps } from "./types/config";
 
 const config = {
   // REQUIRED
-  appName: "Unwave",
+  appName: "Unwave Network",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "The one stop shop for record enthusiasts.",
+    "Ride the unwave.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "unwave.net",
   crisp: {
