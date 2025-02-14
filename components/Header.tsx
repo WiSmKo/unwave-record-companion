@@ -14,18 +14,14 @@ const links: {
   href: string;
   label: string;
 }[] = [
-  // {
-  //   href: "/#pricing",
-  //   label: "Pricing",
-  // },
-  // {
-  //   href: "/#testimonials",
-  //   label: "Reviews",
-  // },
-  // {
-  //   href: "/#faq",
-  //   label: "FAQ",
-  // },
+  {
+    href: "/#search",
+    label: "Record Pal",
+  },
+  {
+    href: "/#podcast",
+    label: "Podcast",
+  }
 ];
 
 const cta: JSX.Element = <ButtonSignin extraStyle="btn-primary" />;
@@ -54,21 +50,12 @@ const Header = () => {
             href="/"
             title={`${config.appName} homepage`}
           >
-            {/* <Image
-              src={logo}
-              alt={`${config.appName} logo`}
-              className="w-8"
-              placeholder="blur"
-              priority={true}
-              width={32}
-              height={32}
-            /> */}
             <span className="text-xl" style={staatliches.style}>{config.appName}</span>
           </Link>
         </div>
         {/* Burger button to open menu on mobile */}
         <div className="flex lg:hidden">
-          {/* <button
+          <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
             onClick={() => setIsOpen(true)}
@@ -88,7 +75,7 @@ const Header = () => {
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
-          </button> */}
+          </button>
         </div>
 
         {/* Your links on large screens */}
@@ -170,10 +157,7 @@ const Header = () => {
                   </Link>
                 ))}
               </div>
-            </div>
-            <div className="divider"></div>
-            {/* Your CTA on small screens */}
-            <div className="flex flex-col">{cta}</div>
+            </div>           
           </div>
         </div>
       </div>

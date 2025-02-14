@@ -26,7 +26,7 @@ export default function Search() {
 
   return (
     <main className="min-h-screen p-8 pb-24">
-      <section className="max-w-xl mx-auto space-y-8 flex justify-end"> 
+      <section className="max-w-xl mx-auto space-y-8 flex justify-end" id="search"> 
         <CurrencySelector onCurrencyChange={handleCurrencyChange} />
       </section>
       <section className="max-w-xl mx-auto space-y-8">
