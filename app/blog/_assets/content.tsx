@@ -4,7 +4,7 @@ import willImg from "@/app/blog/_assets/images/authors/will.png";
 import introducingSupabaseImg from "@/public/blog/introducing-supabase/header.png";
 
 // ==================================================================================================================================================================
-// BLOG CATEGORIES 🏷️
+// BLOG CATEGORIES 
 // ==================================================================================================================================================================
 
 export type categoryType = {
@@ -48,7 +48,7 @@ export const categories: categoryType[] = [
 ];
 
 // ==================================================================================================================================================================
-// BLOG AUTHORS 📝
+// BLOG AUTHORS 
 // ==================================================================================================================================================================
 
 export type authorType = {
@@ -124,14 +124,14 @@ const socialIcons: {
 const authorSlugs: {
   [key: string]: string;
 } = {
-  william: "william",
+  will: "will",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
 export const authors: authorType[] = [
   {
     // The slug to use in the URL, from the authorSlugs object above.
-    slug: authorSlugs.william,
+    slug: authorSlugs.will,
     // The name to display in the author's bio. Up to 60 characters.
     name: "William Smallman-Koepf",
     // The job to display in the author's bio. Up to 60 characters.
@@ -163,7 +163,7 @@ export const authors: authorType[] = [
 ];
 
 // ==================================================================================================================================================================
-// BLOG ARTICLES 📚
+// BLOG ARTICLES 
 // ==================================================================================================================================================================
 
 export type articleType = {
