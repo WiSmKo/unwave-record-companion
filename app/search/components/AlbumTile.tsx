@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { ReleaseData } from '../search-service';
 import StarRating from '@/components/StarRating';
-import { useCurrency } from '@/app/CurrencyProvider';
+import { useCurrency } from '@/app/currency-provider';
 import { Currency, currencyOptions } from '@/types/currency';
 import { Condition } from '@/types/discogs';
 
