@@ -80,13 +80,13 @@ const list: {
 }[] = [
   {
     // Show @username for social media like Twitter. Does not link anywhere but cool to display
-    username: "marclou",
-    name: "Marc Lou",
-    text: "Really easy to use. The tutorials are really useful and explains how everything works. Hope to ship my next project really fast!",
+    username: "Whisk",
+    name: "Will Small",
+    text: "Really easy to use. The tutorials are really useful and explains how everything works.",
     // use refTypes.other if you don't want to display an icon
     type: refTypes.twitter,
     // Link to the person's testimonial. It's more trustable
-    link: "https://twitter.com/marc_louvion",
+    link: "https://twitter.com/wismko",
     // A statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
     img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
     // You can display video testimonials to build more trust. Just swap the type above to "video" and add at least the video source below
@@ -102,9 +102,9 @@ const list: {
   {
     username: "wahab",
     name: "Wahab Shaikh",
-    text: "Easily saves 15+ hrs for me setting up trivial stuff. Now, I can directly focus on shipping features rather than hours of setting up the same technologies from scratch. Feels like a super power! :D",
+    text: "Easily saves 15+ hrs for me setting up trivial stuff. Now, I can directly focus on features rather than hours of setting up the same technologies from scratch. Feels like a super power! :D",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/products/shipfast-2/reviews?review=667971",
+    link: "https://www.producthunt.com/products/Unwave-2/reviews?review=667971",
   },
   {
     name: "Sean",
@@ -116,7 +116,7 @@ const list: {
     name: "Krishna Kant",
     text: "Finally a good boilerplate for Nextjs, now I dont have to cry about it comparing with laravel ecosystem.",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/shipfast-2?comment=2707061",
+    link: "https://www.producthunt.com/posts/Unwave-2?comment=2707061",
   },
   {
     username: "imgyf",
@@ -127,11 +127,11 @@ const list: {
   },
   {
     name: "Yazdun",
-    text: "Yo Marc, I got the boilerplate, it's fantastic man you just save me 10 hours on each project",
+    text: "Yo Will, I got the boilerplate, it's fantastic man you just save me 10 hours on each project",
     type: refTypes.other,
   },
   {
-    name: "Marc Lou",
+    name: "Will Small",
     text: "The tool is exactly what I didn't even know I needed.",
     videoPoster: "https://d1wkquwg5s1b04.cloudfront.net/demo/marcPoster.jpg",
     videoSrc: "https://d1wkquwg5s1b04.cloudfront.net/demo/marcVideo.mp4",
@@ -150,13 +150,13 @@ const list: {
     name: "Dan Mindru",
     text: "Probably one of the most powerful things you can 'npm install' that I've seen",
     type: refTypes.productHunt,
-    link: "https://www.producthunt.com/posts/shipfast-2?comment=2706763",
+    link: "https://www.producthunt.com/posts/Unwave-2?comment=2706763",
   },
   // The last testimonial is featured on big devices (span 2 columns + big font) 👇
   {
     username: "VicPivots",
     name: "Victor Abeledo",
-    text: "Marc, I got your boilerplate and having the payments setup with Stripe + user auth is a blessing. This will save me like a week of work for each new side project I spin up. I appreciate that is well documented, as well. 100% worth it 🚀🚀🚀",
+    text: "Yo, I got your boilerplate and having the payments setup with Stripe + user auth is a blessing. This will save me like a week of work for each new side project I spin up. I appreciate that is well documented, as well. 100% worth it 🚀🚀🚀",
     type: refTypes.twitter,
     link: "https://twitter.com/VicPivots/status/1697352442986250413?s=20",
   },
@@ -366,7 +366,7 @@ const Testimonials11 = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <div className="mb-8">
             <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content">
-              212 makers are already shipping faster!
+              212 listeners are enjoying more
             </h2>
           </div>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">

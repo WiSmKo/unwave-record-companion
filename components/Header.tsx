@@ -21,7 +21,11 @@ const links: {
   {
     href: "/#podcast",
     label: "Podcast",
-  }
+  },
+  {
+    href: "/blog",
+    label: "Blog",
+  },
 ];
 
 const cta: JSX.Element = <ButtonSignin extraStyle="btn-primary" />;

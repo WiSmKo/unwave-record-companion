@@ -1,7 +1,7 @@
 export enum Currency {
-    USD = "USD",
-    EUR = "EUR",
     GBP = "GBP",
+    EUR = "EUR",
+    USD = "USD",
     RSD = "RSD",
     CHF = "CHF",
     CAD = "CAD",
@@ -16,9 +16,9 @@ export enum Currency {
 }
   
 export const currencyOptions = {
-    [Currency.USD]: { value: 'USD', label: 'US Dollar', symbol: '$' },
-    [Currency.EUR]: { value: 'EUR', label: 'Euro', symbol: '€' },
     [Currency.GBP]: { value: 'GBP', label: 'British Pound', symbol: '£' },
+    [Currency.EUR]: { value: 'EUR', label: 'Euro', symbol: '€' },
+    [Currency.USD]: { value: 'USD', label: 'US Dollar', symbol: '$' },
     [Currency.RSD]: { value: 'RSD', label: 'Serbian Dinar', symbol: 'Дин' },
     [Currency.CHF]: { value: 'CHF', label: 'Swiss Franc', symbol: '₣' },
     [Currency.CAD]: { value: 'CAD', label: 'Canadian Dollar', symbol: '$' },

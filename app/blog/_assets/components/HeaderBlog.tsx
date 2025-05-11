@@ -21,9 +21,9 @@ const links: {
   },
 ];
 
-const cta: JSX.Element = (
-  <ButtonSignin text="Prevent disputes" extraStyle="btn-primary md:btn-sm" />
-);
+// const cta: JSX.Element = (
+//   // <ButtonSignin text="Login" extraStyle="btn-primary md:btn-sm" />
+// );
 
 const ButtonPopoverCategories = () => {
   return (
@@ -215,7 +215,7 @@ const HeaderBlog = () => {
         </div>
 
         {/* CTA on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div>
+        {/* <div className="hidden lg:flex lg:justify-end lg:flex-1">{cta}</div> */}
       </nav>
 
       {/* Mobile menu, show/hide based on menu state. */}
@@ -283,7 +283,7 @@ const HeaderBlog = () => {
             </div>
             <div className="divider"></div>
             {/* Your CTA on small screens */}
-            <div className="flex flex-col">{cta}</div>
+            {/* <div className="flex flex-col">{cta}</div> */}
           </div>
         </div>
       </div>

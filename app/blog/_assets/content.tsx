@@ -1,10 +1,10 @@
 import type { JSX } from "react";
 import Image, { StaticImageData } from "next/image";
-import marcImg from "@/app/blog/_assets/images/authors/marc.png";
-import introducingSupabaseImg from "@/public/blog/introducing-supabase/header.png";
+import willImg from "@/app/blog/_assets/images/authors/will.png";
+import introducingUnwaveImg from "@/public/blog/introducing-unwave/header.png";
 
 // ==================================================================================================================================================================
-// BLOG CATEGORIES 🏷️
+// BLOG CATEGORIES 
 // ==================================================================================================================================================================
 
 export type categoryType = {
@@ -32,23 +32,23 @@ export const categories: categoryType[] = [
     titleShort: "Features",
     // The description of the category to display in the category page. Up to 160 characters.
     description:
-      "Here are the latest features we've added to ShipFast. I'm constantly improving our product to help you ship faster.",
+      "Here are the latest features we've added to Unwave.",
     // A short version of the description above, only displayed in the <Header /> on mobile. Up to 60 characters.
-    descriptionShort: "Latest features added to ShipFast.",
+    descriptionShort: "Latest features added to Unwave.",
   },
   {
     slug: categorySlugs.tutorial,
     title: "How Tos & Tutorials",
     titleShort: "Tutorials",
     description:
-      "Learn how to use ShipFast with these step-by-step tutorials. I'll show you how to ship faster and save time.",
+      "Learn how to use Unwave with these step-by-step tutorials.",
     descriptionShort:
-      "Learn how to use ShipFast with these step-by-step tutorials.",
+      "Learn how to use Unwave with these step-by-step tutorials.",
   },
 ];
 
 // ==================================================================================================================================================================
-// BLOG AUTHORS 📝
+// BLOG AUTHORS 
 // ==================================================================================================================================================================
 
 export type authorType = {
@@ -124,46 +124,46 @@ const socialIcons: {
 const authorSlugs: {
   [key: string]: string;
 } = {
-  marc: "marc",
+  will: "will",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
 export const authors: authorType[] = [
   {
     // The slug to use in the URL, from the authorSlugs object above.
-    slug: authorSlugs.marc,
+    slug: authorSlugs.will,
     // The name to display in the author's bio. Up to 60 characters.
-    name: "Marc Lou",
+    name: "William Smallman-Koepf",
     // The job to display in the author's bio. Up to 60 characters.
-    job: "Maker of ByeDispute",
+    job: "Digital Tinkerer",
     // The description of the author to display in the author's bio. Up to 160 characters.
     description:
-      "Marc is a developer and an entrepreneur. He's built 20 startups in the last 3 years. 6 were profitable and 3 were acquired. He's currently building ByeDispute, the #1 Stripe Chargebacks Protection tool.",
+      "Once the drummer of several Birmingham bands, also passionate about coding and building things so naturally is now living on a rock in the mediterranean.",
     // The avatar of the author to display in the author's bio and avatar badge. It's better to use a local image, but you can also use an external image (https://...)
-    avatar: marcImg,
+    avatar: willImg,
     // A list of social links to display in the author's bio.
     socials: [
       {
         name: socialIcons.twitter.name,
         icon: socialIcons.twitter.svg,
-        url: "https://twitter.com/marc_louvion",
+        url: "https://twitter.com/wismko",
       },
       {
         name: socialIcons.linkedin.name,
         icon: socialIcons.linkedin.svg,
-        url: "https://www.linkedin.com/in/marclouvion/",
+        url: "https://www.linkedin.com/in/wismko/",
       },
       {
         name: socialIcons.github.name,
         icon: socialIcons.github.svg,
-        url: "https://github.com/Marc-Lou-Org/ship-fast",
+        url: "https://github.com/wismko/",
       },
     ],
   },
 ];
 
 // ==================================================================================================================================================================
-// BLOG ARTICLES 📚
+// BLOG ARTICLES 
 // ==================================================================================================================================================================
 
 export type articleType = {
@@ -200,33 +200,33 @@ const styles: {
 export const articles: articleType[] = [
   {
     // The unique slug to use in the URL. It's also used to generate the canonical URL.
-    slug: "introducing-supabase",
+    slug: "welcome-to-unwave",
     // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
-    title: "Introducing Supabase to ShipFast",
+    title: "Introducing The Unwave Network",
     // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
     description:
-      "Supabase is an open-source Firebase alternative. It's a great tool for building a backend for your app. It's now integrated with ShipFast!",
+      "We don't believe life is meant to be lived vicariously through our screens. The physical world is full of wonder, and paired well with tech we can get the best of both.",
     // An array of categories of the article. It's used to generate the category badges, the category filter, and more.
     categories: [
       categories.find((category) => category.slug === categorySlugs.feature),
     ],
     // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.marc),
+    author: authors.find((author) => author.slug === authorSlugs.will),
     // The date of the article. It's used to generate the meta date.
-    publishedAt: "2023-11-20",
+    publishedAt: "2025-05-11",
     image: {
       // The image to display in <CardArticle /> components.
-      src: introducingSupabaseImg,
+      src: introducingUnwaveImg,
       // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
-      urlRelative: "/blog/introducing-supabase/header.jpg",
-      alt: "Supabase and ShipFast logo combined",
+      urlRelative: "/blog/welcome-to-unwave/header.jpg",
+      alt: "Unwave logo",
     },
     // The actual content of the article that will be shown under the <h1> title in the article page.
     content: (
       <>
         <Image
-          src={introducingSupabaseImg}
-          alt="Supabase and ShipFast logo combined"
+          src={introducingUnwaveImg}
+          alt="Unwave logo combined"
           width={700}
           height={500}
           priority={true}
@@ -236,54 +236,10 @@ export const articles: articleType[] = [
         <section>
           <h2 className={styles.h2}>Introduction</h2>
           <p className={styles.p}>
-            Supabase is an open-source Firebase alternative. It&apos;s a great
-            tool for building a backend for your app. It&apos;s now integrated
-            with ShipFast!
+            This is a new space, with lots more to keep. Welcome to Unwave!
           </p>
         </section>
 
-        <section>
-          <h3 className={styles.h3}>1. Create a supabase account</h3>
-          <p className={styles.p}>
-            First, go to{" "}
-            <a href="https://supabase.com/" className="link link-primary">
-              Supabase
-            </a>{" "}
-            and create an account. It&apos;s free for up to 10,000 rows per
-            table.
-            <br />
-            Then create a new project and a new table. You can use the following
-            SQL schema:
-          </p>
-
-          <pre className={styles.code}>
-            <code>
-              {`CREATE TABLE public.users (
-  id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass),
-  email text NOT NULL,
-  password text NOT NULL,
-  created_at timestamp with time zone NOT NULL DEFAULT now(),
-  updated_at timestamp with time zone NOT NULL DEFAULT now(),
-  CONSTRAINT users_pkey PRIMARY KEY (id)
-);`}
-            </code>
-          </pre>
-        </section>
-
-        <section>
-          <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
-          <p className={styles.p}>
-            Copy the <span className={styles.codeInline}>API URL</span> and{" "}
-            <span className={styles.codeInline}>API Key</span> from your
-            Supabase project settings and add them to your ShipFast project
-            settings. Add these files to your project:
-          </p>
-
-          <ul className={styles.ul}>
-            <li className={styles.li}>.env.local</li>
-            <li className={styles.li}>.env.production</li>
-          </ul>
-        </section>
       </>
     ),
   },
